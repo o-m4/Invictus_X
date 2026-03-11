@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Activity - Smart CRM</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/activity.css" />
+</head>
+<body>
+  <header class="page-header">
+    <h2>My Activity</h2>
+  </header>
+
+  <main class="activity-main">
+    <h3 class="section-title">My Requests</h3>
+
+    <div class="request-card">
+      <div class="request-header">
+        <span class="request-id">Service Request #101</span>
+        <div style="display:flex;gap:6px;align-items:center;">
+          <a href="chat.html?cmp=CMP-002" class="chat-link-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Chat
+          </a>
+          <span class="badge badge-assigned">Assigned</span>
+        </div>
+      </div>
+      <div class="request-service">Birth Certificate</div>
+      <div class="timeline">
+        <div class="timeline-step completed">
+          <div class="step-circle done">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20,6 9,17 4,12"/></svg>
+          </div>
+          <span>Submitted</span>
+        </div>
+        <div class="timeline-line filled"></div>
+        <div class="timeline-step completed">
+          <div class="step-circle done">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <span>Assigned</span>
+        </div>
+        <div class="timeline-line"></div>
+        <div class="timeline-step">
+          <div class="step-circle pending">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+          </div>
+          <span>Processing</span>
+        </div>
+        <div class="timeline-line"></div>
+        <div class="timeline-step">
+          <div class="step-circle pending">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="3"><polyline points="20,6 9,17 4,12"/></svg>
+          </div>
+          <span>Completed</span>
+        </div>
+      </div>
+      <div class="time-remaining">Time Remaining: 2 Days</div>
+    </div>
+
+    <div class="request-card">
+      <div class="request-header">
+        <span class="request-id">Complaint #204</span>
+        <div style="display:flex;gap:6px;align-items:center;">
+          <a href="chat.html?cmp=CMP-003" class="chat-link-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Chat
+          </a>
+          <span class="badge badge-processing">Processing</span>
+        </div>
+      </div>
+      <div class="request-service">Garbage Issue</div>
+      <div class="timeline">
+        <div class="timeline-step completed">
+          <div class="step-circle done">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20,6 9,17 4,12"/></svg>
+          </div>
+          <span>Submitted</span>
+        </div>
+        <div class="timeline-line filled"></div>
+        <div class="timeline-step completed">
+          <div class="step-circle done">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <span>Assigned</span>
+        </div>
+        <div class="timeline-line filled"></div>
+        <div class="timeline-step completed">
+          <div class="step-circle active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+          </div>
+          <span>Processing</span>
+        </div>
+        <div class="timeline-line"></div>
+        <div class="timeline-step">
+          <div class="step-circle pending">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="3"><polyline points="20,6 9,17 4,12"/></svg>
+          </div>
+          <span>Completed</span>
+        </div>
+      </div>
+      <div class="time-remaining">Time Remaining: 1 Day</div>
+    </div>
+
+    <div class="request-card resolved">
+      <div class="request-header">
+        <span class="request-id">Complaint #198</span>
+        <div style="display:flex;gap:6px;align-items:center;">
+          <a href="chat.html?cmp=CMP-004" class="chat-link-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Chat
+          </a>
+          <span class="badge badge-resolved">Resolved</span>
+        </div>
+      </div>
+      <div class="request-service">Street Light</div>
+      <div class="timeline">
+        <div class="timeline-step completed">
+          <div class="step-circle done"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20,6 9,17 4,12"/></svg></div>
+          <span>Submitted</span>
+        </div>
+        <div class="timeline-line filled"></div>
+        <div class="timeline-step completed">
+          <div class="step-circle done"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+          <span>Assigned</span>
+        </div>
+        <div class="timeline-line filled"></div>
+        <div class="timeline-step completed">
+          <div class="step-circle done"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg></div>
+          <span>Processing</span>
+        </div>
+        <div class="timeline-line filled"></div>
+        <div class="timeline-step completed">
+          <div class="step-circle done"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20,6 9,17 4,12"/></svg></div>
+          <span>Completed</span>
+        </div>
+      </div>
+      <div class="resolved-msg">Resolved on: 2026-03-05</div>
+    </div>
+  </main>
+
+  <!-- Bottom Nav -->
+  <nav class="bottom-nav">
+    <a href="citizen.html" class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+      <span>Home</span>
+    </a>
+    <a href="activity.html" class="nav-item active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+      <span>Activity</span>
+    </a>
+    <a href="profile.html" class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span>Profile</span>
+    </a>
+  </nav>
+
+  <script src="js/activity.js"></script>
+</body>
+</html>

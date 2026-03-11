@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard - Smart CRM</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-label">Smart CRM</div>
+        <div class="brand-sub">Admin Panel</div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#overview" class="sidebar-link active" onclick="showSection('overview')">Overview</a>
+        <a href="#complaints" class="sidebar-link" onclick="showSection('complaints')">Complaints</a>
+        <a href="#employees" class="sidebar-link" onclick="showSection('employees')">Officers</a>
+        <a href="#services" class="sidebar-link" onclick="showSection('services')">Services</a>
+        <a href="#corruption" class="sidebar-link" onclick="showSection('corruption')">Corruption Reports</a>
+      </nav>
+      <div class="sidebar-footer">Admin | Greater Noida</div>
+    </aside>
+
+    <!-- Content -->
+    <div class="admin-content">
+
+      <!-- Overview Section -->
+      <section id="section-overview" class="admin-section">
+        <div class="section-heading">Dashboard Overview</div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number blue">142</div>
+            <div class="stat-desc">Total Complaints</div>
+            <div class="stat-note">+12 today</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number green">98</div>
+            <div class="stat-desc">Resolved</div>
+            <div class="stat-note">69% rate</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number orange">31</div>
+            <div class="stat-desc">In Progress</div>
+            <div class="stat-note">SLA tracking</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number red">13</div>
+            <div class="stat-desc">Escalated</div>
+            <div class="stat-note">Needs attention</div>
+          </div>
+        </div>
+
+        <div class="overview-row">
+          <div class="overview-card">
+            <div class="card-title">Recent Complaints</div>
+            <table class="data-table">
+              <thead>
+                <tr><th>ID</th><th>Title</th><th>Status</th><th>Priority</th></tr>
+              </thead>
+              <tbody id="recentComplaintsTable">
+                <tr><td>CMP-001</td><td>Broken streetlight on MG Road</td><td><span class="badge badge-resolved">Resolved</span></td><td><span class="badge badge-medium">Medium</span></td></tr>
+                <tr><td>CMP-002</td><td>Pothole near school zone</td><td><span class="badge badge-inprog">In Progress</span></td><td><span class="badge badge-high">High</span></td></tr>
+                <tr><td>CMP-003</td><td>Garbage not collected</td><td><span class="badge badge-pending">Pending</span></td><td><span class="badge badge-high">High</span></td></tr>
+                <tr><td>CMP-004</td><td>Water supply disruption</td><td><span class="badge badge-inprog">In Progress</span></td><td><span class="badge badge-critical">Critical</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="overview-card small">
+            <div class="card-title">By Category</div>
+            <div class="cat-bar-list">
+              <div class="cat-row"><span>Infrastructure</span><div class="bar-wrap"><div class="bar" style="width:72%;background:#1d4ed8;"></div></div><span>38</span></div>
+              <div class="cat-row"><span>Roads</span><div class="bar-wrap"><div class="bar" style="width:51%;background:#7c3aed;"></div></div><span>27</span></div>
+              <div class="cat-row"><span>Sanitation</span><div class="bar-wrap"><div class="bar" style="width:42%;background:#059669;"></div></div><span>22</span></div>
+              <div class="cat-row"><span>Water</span><div class="bar-wrap"><div class="bar" style="width:34%;background:#d97706;"></div></div><span>18</span></div>
+              <div class="cat-row"><span>Other</span><div class="bar-wrap"><div class="bar" style="width:70%;background:#64748b;"></div></div><span>37</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Complaints Section -->
+      <section id="section-complaints" class="admin-section" style="display:none;">
+        <div class="section-heading">All Complaints</div>
+        <div class="filter-row">
+          <input type="text" id="adminSearch" placeholder="Search by ID or title..." class="search-bar" oninput="filterComplaints()" />
+          <select id="statusFilter" onchange="filterComplaints()">
+            <option value="">All Status</option>
+            <option value="pending">Pending</option>
+            <option value="in-progress">In Progress</option>
+            <option value="resolved">Resolved</option>
+            <option value="escalated">Escalated</option>
+          </select>
+        </div>
+        <table class="data-table full" id="complaintsTable">
+          <thead>
+            <tr><th>ID</th><th>Title</th><th>Citizen</th><th>Location</th><th>Assigned To</th><th>Priority</th><th>Status</th><th>SLA</th></tr>
+          </thead>
+          <tbody id="complaintsBody">
+            <tr data-status="resolved"><td>CMP-001</td><td>Broken streetlight on MG Road</td><td>Rahul Sharma</td><td>MG Road, Sector 12</td><td>Amit Verma</td><td><span class="badge badge-medium">Medium</span></td><td><span class="badge badge-resolved">Resolved</span></td><td>2026-03-03</td></tr>
+            <tr data-status="in-progress"><td>CMP-002</td><td>Pothole near school zone</td><td>Priya Patel</td><td>School Lane, Sector 5</td><td>Suresh Kumar</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-inprog">In Progress</span></td><td>2026-03-10</td></tr>
+            <tr data-status="pending"><td>CMP-003</td><td>Garbage not collected for 3 days</td><td>Anita Gupta</td><td>Nehru Nagar Colony</td><td>Ravi Singh</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-pending">Pending</span></td><td>2026-03-07</td></tr>
+            <tr data-status="in-progress"><td>CMP-004</td><td>Water supply disruption</td><td>Vikram Joshi</td><td>Shastri Block B</td><td>Deepak Yadav</td><td><span class="badge badge-critical">Critical</span></td><td><span class="badge badge-inprog">In Progress</span></td><td>2026-03-06</td></tr>
+            <tr data-status="pending"><td>CMP-005</td><td>Street dog menace near park</td><td>Sunita Mehta</td><td>Central Park Area</td><td>-</td><td><span class="badge badge-medium">Medium</span></td><td><span class="badge badge-pending">Pending</span></td><td>2026-03-12</td></tr>
+            <tr data-status="escalated"><td>CMP-006</td><td>Illegal construction blocking road</td><td>Mohan Das</td><td>Laxmi Nagar</td><td>Inspector Kaur</td><td><span class="badge badge-critical">Critical</span></td><td><span class="badge badge-escalated">Escalated</span></td><td>2026-03-04</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Employees Section -->
+      <section id="section-employees" class="admin-section" style="display:none;">
+        <div class="section-heading">Field Officers</div>
+        <div class="emp-grid">
+          <div class="emp-card">
+            <div class="emp-avatar">A</div>
+            <div class="emp-info">
+              <div class="emp-name">Amit Verma</div>
+              <div class="emp-dept">Infrastructure</div>
+            </div>
+            <span class="badge badge-available">Available</span>
+            <div class="emp-stats">
+              <div><span class="green">24</span><br/><small>Resolved</small></div>
+              <div><span class="orange">2</span><br/><small>Pending</small></div>
+              <div><span class="blue">4.8</span><br/><small>Rating</small></div>
+            </div>
+            <div class="perf-badge gold">Top Performer</div>
+          </div>
+          <div class="emp-card">
+            <div class="emp-avatar">S</div>
+            <div class="emp-info">
+              <div class="emp-name">Suresh Kumar</div>
+              <div class="emp-dept">Roads &amp; PWD</div>
+            </div>
+            <span class="badge badge-busy">Busy</span>
+            <div class="emp-stats">
+              <div><span class="green">18</span><br/><small>Resolved</small></div>
+              <div><span class="orange">3</span><br/><small>Pending</small></div>
+              <div><span class="blue">4.5</span><br/><small>Rating</small></div>
+            </div>
+            <div class="perf-badge silver">High Performer</div>
+          </div>
+          <div class="emp-card">
+            <div class="emp-avatar">R</div>
+            <div class="emp-info">
+              <div class="emp-name">Ravi Singh</div>
+              <div class="emp-dept">Sanitation</div>
+            </div>
+            <span class="badge badge-available">Available</span>
+            <div class="emp-stats">
+              <div><span class="green">31</span><br/><small>Resolved</small></div>
+              <div><span class="orange">1</span><br/><small>Pending</small></div>
+              <div><span class="blue">4.9</span><br/><small>Rating</small></div>
+            </div>
+            <div class="perf-badge gold">Top Performer</div>
+          </div>
+          <div class="emp-card">
+            <div class="emp-avatar">D</div>
+            <div class="emp-info">
+              <div class="emp-name">Deepak Yadav</div>
+              <div class="emp-dept">Water Supply</div>
+            </div>
+            <span class="badge badge-busy">Busy</span>
+            <div class="emp-stats">
+              <div><span class="green">12</span><br/><small>Resolved</small></div>
+              <div><span class="orange">4</span><br/><small>Pending</small></div>
+              <div><span class="blue">4.2</span><br/><small>Rating</small></div>
+            </div>
+            <div class="perf-badge bronze">Good Performer</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Section -->
+      <section id="section-services" class="admin-section" style="display:none;">
+        <div class="section-heading">Official Service Pricing</div>
+        <table class="data-table full">
+          <thead><tr><th>Service</th><th>Official Fee</th><th>Processing Time</th></tr></thead>
+          <tbody>
+            <tr><td>Birth Certificate</td><td>Rs. 50</td><td>3 days</td></tr>
+            <tr><td>Building Plan Approval</td><td>Rs. 500</td><td>30 days</td></tr>
+            <tr><td>Water Connection</td><td>Rs. 1200</td><td>7 days</td></tr>
+            <tr><td>Trade License</td><td>Rs. 800</td><td>15 days</td></tr>
+            <tr><td>Property Tax Receipt</td><td>Free</td><td>Same day</td></tr>
+            <tr><td>Road Repair Request</td><td>Free</td><td>5 days</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Corruption Reports Section -->
+      <section id="section-corruption" class="admin-section" style="display:none;">
+        <div class="section-heading">Anonymous Corruption Reports</div>
+        <div class="alert-box red">These reports are forwarded directly to the Vigilance Department.</div>
+        <table class="data-table full">
+          <thead><tr><th>Report ID</th><th>Department</th><th>Amount Demanded</th><th>Service</th><th>Date</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>#CR-001</td><td>Water Supply</td><td>Rs. 500 extra</td><td>Water Connection</td><td>2026-03-01</td><td><span class="badge badge-pending">Under Review</span></td></tr>
+            <tr><td>#CR-002</td><td>Registration</td><td>Rs. 1000 extra</td><td>Birth Certificate</td><td>2026-03-04</td><td><span class="badge badge-inprog">Investigating</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

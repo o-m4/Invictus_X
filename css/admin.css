@@ -1,0 +1,284 @@
+/* ============================================================
+   admin.css — Admin Dashboard Styles
+   ============================================================ */
+
+/* ── Layout ──────────────────────────────────────────── */
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ── Sidebar ─────────────────────────────────────────── */
+.sidebar {
+  width: 220px;
+  background: #1e293b;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  min-height: 100vh;
+}
+
+.sidebar-brand {
+  padding: 22px 20px 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.brand-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #93c5fd;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.brand-sub {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: white;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 10px;
+  flex: 1;
+}
+
+.sidebar-link {
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 7px;
+  color: #94a3b8;
+  font-size: 0.88rem;
+  font-weight: 500;
+  margin-bottom: 3px;
+  border-left: 3px solid transparent;
+  transition: background 0.15s, color 0.15s;
+}
+
+.sidebar-link:hover,
+.sidebar-link.active {
+  background: rgba(255,255,255,0.06);
+  color: white;
+  border-left-color: #3b82f6;
+}
+
+.sidebar-footer {
+  padding: 16px 20px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  font-size: 0.78rem;
+  color: #64748b;
+}
+
+/* ── Content ─────────────────────────────────────────── */
+.admin-content {
+  flex: 1;
+  padding: 28px;
+  overflow-y: auto;
+  background: var(--bg);
+}
+
+.admin-section {
+  max-width: 1100px;
+}
+
+.section-heading {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 22px;
+}
+
+/* ── Stats Grid ──────────────────────────────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px 18px;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+.stat-number.blue   { color: var(--primary); }
+.stat-number.green  { color: var(--green); }
+.stat-number.orange { color: var(--orange); }
+.stat-number.red    { color: var(--red); }
+
+.stat-desc {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+.stat-note {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 3px;
+}
+
+/* ── Overview Row ────────────────────────────────────── */
+.overview-row {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 18px;
+}
+
+.overview-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 22px;
+}
+
+.overview-card.small {}
+
+.card-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+/* ── Category Bar ────────────────────────────────────── */
+.cat-bar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cat-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--text);
+}
+
+.cat-row > span:first-child {
+  width: 90px;
+  flex-shrink: 0;
+  font-weight: 500;
+}
+
+.bar-wrap {
+  flex: 1;
+  background: var(--bg);
+  border-radius: 99px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.5s;
+}
+
+.cat-row > span:last-child {
+  width: 24px;
+  text-align: right;
+  font-weight: 700;
+  color: var(--text-light);
+}
+
+/* ── Filter Row ──────────────────────────────────────── */
+.filter-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.filter-row .search-bar {
+  flex: 1;
+}
+
+.filter-row select {
+  padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.88rem;
+  background: var(--surface);
+  color: var(--text);
+  outline: none;
+}
+
+/* ── Employee Grid ───────────────────────────────────── */
+.emp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.emp-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+
+.emp-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 1.1rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.emp-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.emp-dept {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  margin-bottom: 10px;
+}
+
+.emp-info { margin-bottom: 10px; }
+
+.emp-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 12px 0;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--text-light);
+}
+
+.emp-stats span {
+  font-size: 1.1rem;
+  font-weight: 800;
+  display: block;
+}
+
+.perf-badge {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.perf-badge.gold   { background: #fef9c3; color: #92400e; }
+.perf-badge.silver { background: #f1f5f9; color: #475569; }
+.perf-badge.bronze { background: #ffedd5; color: #9a3412; }

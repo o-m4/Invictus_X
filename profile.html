@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile - Smart CRM</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/citizen.css" />
+</head>
+<body>
+  <header class="page-header">
+    <h2>My Profile</h2>
+  </header>
+
+  <main class="profile-main">
+    <div class="profile-card">
+      <div class="profile-avatar">R</div>
+      <div class="profile-name">Rahul Sharma</div>
+      <div class="profile-info-row"><span class="info-label">Phone</span><span>+91 98765 43210</span></div>
+      <div class="profile-info-row"><span class="info-label">Email</span><span>rahul.sharma@email.com</span></div>
+      <div class="profile-info-row"><span class="info-label">Area</span><span>Sector 12, Greater Noida</span></div>
+    </div>
+
+    <div class="profile-stats">
+      <div class="pstat"><div class="pstat-num">5</div><div class="pstat-label">Submitted</div></div>
+      <div class="pstat"><div class="pstat-num green">3</div><div class="pstat-label">Resolved</div></div>
+      <div class="pstat"><div class="pstat-num orange">2</div><div class="pstat-label">Open</div></div>
+    </div>
+
+    <div class="profile-section-title">Settings</div>
+    <div class="profile-settings">
+      <div class="setting-row">
+        <span>SMS Notifications</span>
+        <label class="toggle"><input type="checkbox" checked /><span class="slider"></span></label>
+      </div>
+      <div class="setting-row">
+        <span>Email Notifications</span>
+        <label class="toggle"><input type="checkbox" /><span class="slider"></span></label>
+      </div>
+    </div>
+
+    <button class="btn-outline full-width" onclick="alert('Logged out')">Log Out</button>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="citizen.html" class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+      <span>Home</span>
+    </a>
+    <a href="activity.html" class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+      <span>Activity</span>
+    </a>
+    <a href="profile.html" class="nav-item active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span>Profile</span>
+    </a>
+  </nav>
+</body>
+</html>

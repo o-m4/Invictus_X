@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Employee Chat - Smart CRM</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/chat.css" />
+</head>
+<body>
+
+  <div class="chat-layout">
+
+    <!-- LEFT: Conversation List -->
+    <aside class="chat-sidebar">
+      <div class="chat-sidebar-header">
+        <div class="chat-sidebar-title">Citizen Messages</div>
+        <a href="employee.html" class="chat-back-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="15,18 9,12 15,6"/></svg>
+          Back
+        </a>
+      </div>
+
+      <input type="text" class="search-bar" id="convSearch" placeholder="Search citizens..." oninput="filterConversations()" style="margin:10px 12px 6px; width:calc(100% - 24px);" />
+
+      <div class="conv-list" id="convList">
+
+        <div class="conv-item active" onclick="openChat('CMP-002', 'Priya Patel', 'Roads &amp; PWD', 'CMP-002', 'emp')" id="conv-CMP-002">
+          <div class="conv-avatar blue">P</div>
+          <div class="conv-info">
+            <div class="conv-name">Priya Patel</div>
+            <div class="conv-preview">When will the work be completed?</div>
+            <div class="conv-complaint">CMP-002 — Pothole near school zone</div>
+          </div>
+          <div class="conv-meta">
+            <div class="conv-time">10:28 AM</div>
+            <div class="conv-unread" id="unread-CMP-002">2</div>
+          </div>
+        </div>
+
+        <div class="conv-item" onclick="openChat('CMP-005', 'Sunita Mehta', 'Animal Control', 'CMP-005', 'emp')" id="conv-CMP-005">
+          <div class="conv-avatar purple">S</div>
+          <div class="conv-info">
+            <div class="conv-name">Sunita Mehta</div>
+            <div class="conv-preview">The dogs are still here, please help</div>
+            <div class="conv-complaint">CMP-005 — Street dog menace near park</div>
+          </div>
+          <div class="conv-meta">
+            <div class="conv-time">9:14 AM</div>
+            <div class="conv-unread" id="unread-CMP-005">1</div>
+          </div>
+        </div>
+
+        <div class="conv-item" onclick="openChat('CMP-006', 'Mohan Das', 'Enforcement', 'CMP-006', 'emp')" id="conv-CMP-006">
+          <div class="conv-avatar red">M</div>
+          <div class="conv-info">
+            <div class="conv-name">Mohan Das</div>
+            <div class="conv-preview">This is urgent, construction continues</div>
+            <div class="conv-complaint">CMP-006 — Illegal construction blocking road</div>
+          </div>
+          <div class="conv-meta">
+            <div class="conv-time">Mar 7</div>
+            <div class="conv-unread hidden">0</div>
+          </div>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- RIGHT: Chat Window -->
+    <div class="chat-window" id="chatWindow">
+
+      <div class="chat-header" id="chatHeader">
+        <div class="chat-header-avatar" id="chatAvatar">P</div>
+        <div class="chat-header-info">
+          <div class="chat-header-name" id="chatName">Priya Patel</div>
+          <div class="chat-header-sub" id="chatSub">CMP-002 — Pothole near school zone</div>
+        </div>
+        <div class="chat-header-status">
+          <span class="online-dot"></span> Online
+        </div>
+      </div>
+
+      <div class="chat-info-bar">
+        <div class="chat-info-item">
+          <span class="chat-info-label">Complaint</span>
+          <span class="chat-info-val" id="infoId">CMP-002</span>
+        </div>
+        <div class="chat-info-item">
+          <span class="chat-info-label">Status</span>
+          <span class="badge badge-inprog" id="infoStatus">In Progress</span>
+        </div>
+        <div class="chat-info-item">
+          <span class="chat-info-label">SLA</span>
+          <span class="chat-info-val" id="infoSla">2026-03-10</span>
+        </div>
+        <div class="chat-info-item">
+          <span class="chat-info-label">Priority</span>
+          <span class="chat-info-val" id="infoDept">High</span>
+        </div>
+      </div>
+
+      <div class="chat-messages" id="chatMessages"></div>
+
+      <div class="typing-indicator" id="typingIndicator" style="display:none;">
+        <span id="typingName">Priya Patel</span> is typing
+        <span class="typing-dots"><span></span><span></span><span></span></span>
+      </div>
+
+      <!-- Employee quick replies -->
+      <div class="quick-replies" id="quickReplies">
+        <button class="quick-chip" onclick="sendQuick('I have received your complaint and will visit the site shortly.')">Will visit soon</button>
+        <button class="quick-chip" onclick="sendQuick('Work is in progress. Please allow 1-2 more days.')">Work in progress</button>
+        <button class="quick-chip" onclick="sendQuick('The issue has been resolved. Please confirm.')">Issue resolved</button>
+        <button class="quick-chip" onclick="sendQuick('I need more details about the exact location.')">Need more info</button>
+      </div>
+
+      <div class="chat-input-bar">
+        <label class="attach-btn" for="chatFileInput" title="Send photo update">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+        </label>
+        <input type="file" id="chatFileInput" accept="image/*" style="display:none;" onchange="attachPhoto(this)" />
+        <input type="text" id="chatInput" class="chat-text-input" placeholder="Send an update to citizen..." onkeydown="handleKey(event)" />
+        <button class="chat-send-btn" onclick="sendMessage()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22,2 15,22 11,13 2,9"/></svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/chat.js"></script>
+  <script> window.USER_ROLE = "employee"; </script>
+</body>
+</html>

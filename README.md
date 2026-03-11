@@ -35,15 +35,6 @@ Government employees can manage requests through a workflow system, while admini
 - Admin monitoring dashboard.
 - FastAPI backend for request management.
 
-
-**How to Run the Project**
-1. Install dependencies
-- pip install fastapi uvicorn
-2. Start backend server
-- python -m uvicorn backend.main:app --reload
-3. Open frontend
-- frontend/index.html
-
 **Demo Workflow**
 
 - Citizen submits complaint →
@@ -80,3 +71,10 @@ Government employees can manage requests through a workflow system, while admini
 
 ****Team****
 *Team Invictus X*
+
+
+**How to Run the Project**
+  ```bash
+- pip install fastapi uvicorn
+- python -m uvicorn backend.main:app --reload
+- frontend/index.html

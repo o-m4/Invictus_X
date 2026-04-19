@@ -1,0 +1,121 @@
+/* ============================================================
+   activity.css  —  My Activity / Tracking Page
+   ============================================================ */
+
+.activity-main {
+  padding: 20px 16px 100px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ── Request Card ───────────────────────────────────────── */
+.request-card {
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--sh-sm);
+  padding: 18px 18px 16px;
+  margin-bottom: 14px;
+  transition: box-shadow .2s;
+}
+.request-card:hover { box-shadow: var(--sh-md); }
+.request-card.resolved { border-left: 4px solid var(--green); }
+
+.request-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+.request-id {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+.request-service {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+
+/* ── Timeline ───────────────────────────────────────────── */
+.timeline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.timeline-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.timeline-step span {
+  font-size: 0.66rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.timeline-step.completed span { color: var(--text-mid); }
+
+.step-circle {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.step-circle svg { width: 16px; height: 16px; }
+
+.step-circle.done {
+  background: var(--green);
+  box-shadow: 0 0 0 4px var(--green-soft);
+}
+.step-circle.active {
+  background: var(--saffron);
+  box-shadow: 0 0 0 4px var(--saffron-soft);
+}
+.step-circle.pending {
+  background: var(--border);
+}
+.step-circle.pending svg { stroke: var(--text-muted); }
+
+.timeline-line {
+  flex: 1;
+  height: 3px;
+  background: var(--border);
+  margin: 0 3px;
+  margin-bottom: 22px;
+  border-radius: 2px;
+}
+.timeline-line.filled { background: var(--green); }
+
+/* ── Time / Resolved ────────────────────────────────────── */
+.time-remaining {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--amber);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--amber-soft);
+  border-radius: var(--r-full);
+  padding: 5px 12px;
+  width: fit-content;
+  margin: 0 auto;
+}
+.resolved-msg {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--green);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--green-soft);
+  border-radius: var(--r-full);
+  padding: 5px 12px;
+  width: fit-content;
+  margin: 0 auto;
+}

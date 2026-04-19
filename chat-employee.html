@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Citizen Messages - Smart CRM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/chat.css"/>
+</head>
+<body>
+<div class="chat-layout">
+
+  <!-- ── Sidebar ──────────────────────────────────────── -->
+  <aside class="chat-sidebar">
+    <div class="sidebar-header">
+      <span class="sidebar-title">Citizen Messages</span>
+      <a href="employee.html" class="back-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="14" height="14"><polyline points="15,18 9,12 15,6"/></svg>
+        Back
+      </a>
+    </div>
+    <div class="sidebar-search">
+      <input id="convSearch" type="text" placeholder="Search citizens..." oninput="filterConvs()"/>
+    </div>
+    <div class="conv-list" id="convList"></div>
+  </aside>
+
+  <!-- ── Chat Window ───────────────────────────────────── -->
+  <div class="chat-window">
+
+    <div class="chat-topbar">
+      <div class="topbar-avatar" id="topbarAvatar">P</div>
+      <div class="topbar-info">
+        <div class="topbar-name" id="topbarName">Select a citizen</div>
+        <div class="topbar-sub"  id="topbarSub">—</div>
+      </div>
+      <div class="topbar-status">
+        <span class="online-dot"></span> Online
+      </div>
+    </div>
+
+    <div class="info-strip">
+      <div class="info-chip">
+        <span class="info-label">Status</span>
+        <span class="info-val" id="infoStatus">—</span>
+      </div>
+      <div class="info-chip">
+        <span class="info-label">SLA Date</span>
+        <span class="info-val" id="infoSla">—</span>
+      </div>
+      <div class="info-chip">
+        <span class="info-label">Department</span>
+        <span class="info-val" id="infoDept">—</span>
+      </div>
+    </div>
+
+    <div class="messages-area" id="messagesArea"></div>
+
+    <div class="typing-row" id="typingIndicator" style="display:none;">
+      <div class="typing-dots"><span></span><span></span><span></span></div>
+      Citizen is typing...
+    </div>
+
+    <div class="quick-bar" id="quickBar"></div>
+
+    <div class="input-bar">
+      <div class="input-wrap">
+        <label class="attach-label" for="fileInput" title="Send work photo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>
+        </label>
+        <input type="file" id="fileInput" accept="image/*" style="display:none;" onchange="attachPhoto(this)"/>
+        <input type="text" id="msgInput" class="msg-input" placeholder="Send an update to citizen..."/>
+      </div>
+      <button class="send-btn" onclick="sendMessage()" id="sendBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22,2 15,22 11,13 2,9"/></svg>
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<script>window.CHAT_ROLE = "employee";</script>
+<script src="js/chat.js"></script>
+</body>
+</html>

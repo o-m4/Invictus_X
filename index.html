@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Civic Service Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    body { background: var(--bg); display: flex; flex-direction: column; min-height: 100vh; }
+
+    .index-hero {
+      background: var(--navy);
+      text-align: center;
+      padding: 56px 24px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .index-hero::after {
+      content:'';
+      position:absolute;
+      bottom:0;left:0;right:0;height:4px;
+      background:linear-gradient(90deg,var(--saffron),var(--saffron-dark),var(--saffron));
+    }
+    .hero-badge {
+      display:inline-block;
+      background:rgba(249,115,22,.15);
+      border:1px solid rgba(249,115,22,.3);
+      color:#FED7AA;
+      padding:5px 16px;
+      border-radius:var(--r-full);
+      font-size:0.72rem;
+      font-weight:700;
+      letter-spacing:1.2px;
+      text-transform:uppercase;
+      margin-bottom:18px;
+    }
+    .index-hero h1 { font-family: 'Merriweather', Georgia, serif;
+      font-size:clamp(1.6rem,4vw,2.4rem);
+      font-weight:800;
+      color:#fff;
+      line-height:1.2;
+      margin-bottom:12px;
+      letter-spacing:-.3px;
+    }
+    .index-hero h1 span { color:var(--saffron); }
+    .index-hero p {
+      font-size:0.94rem;
+      color:rgba(255,255,255,.68);
+      max-width:520px;
+      margin:0 auto 36px;
+      line-height:1.65;
+    }
+    .trust-row {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:24px;
+      flex-wrap:wrap;
+      margin-top:6px;
+    }
+    .trust-item {
+      display:flex;
+      align-items:center;
+      gap:6px;
+      font-size:0.76rem;
+      color:rgba(255,255,255,.55);
+      font-weight:500;
+    }
+    .trust-item::before {
+      content:'';
+      color:var(--saffron);
+      font-weight:800;
+    }
+
+    .portal-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:20px;
+      padding:36px 24px 48px;
+      max-width:900px;
+      margin:0 auto;
+      width:100%;
+    }
+
+    .portal-card {
+      background:var(--surface);
+      border-radius:var(--r-xl);
+      border:1px solid var(--border-light);
+      box-shadow:var(--sh-sm);
+      padding:28px 24px;
+      display:flex;
+      flex-direction:column;
+      gap:0;
+      transition:all .2s;
+      position:relative;
+      overflow:hidden;
+    }
+    .portal-card:hover { box-shadow:var(--sh-lg); transform:translateY(-3px); }
+
+    .portal-card::before {
+      content:'';
+      position:absolute;
+      top:0;left:0;right:0;
+      height:4px;
+    }
+    .portal-card.citizen::before  { background:linear-gradient(90deg,#1E3A5F,#2563EB); }
+    .portal-card.employee::before { background:linear-gradient(90deg,#14532D,#16A34A); }
+    .portal-card.admin::before    { background:linear-gradient(90deg,#312E81,#7C3AED); }
+
+    .portal-icon {
+      width:52px;height:52px;
+      border-radius:var(--r-md);
+      display:flex;align-items:center;justify-content:center;
+      margin-bottom:16px;
+    }
+    .portal-icon svg { width:26px;height:26px; }
+    .citizen  .portal-icon { background:#EFF6FF; }
+    .citizen  .portal-icon svg { stroke:#2563EB; }
+    .employee .portal-icon { background:var(--green-soft); }
+    .employee .portal-icon svg { stroke:var(--green); }
+    .admin    .portal-icon { background:#EDE9FE; }
+    .admin    .portal-icon svg { stroke:#7C3AED; }
+
+    .portal-card h2 {
+      font-size:1.1rem;
+      font-weight:800;
+      color:var(--navy);
+      margin-bottom:6px;
+    }
+    .portal-card p {
+      font-size:0.84rem;
+      color:var(--text-light);
+      line-height:1.55;
+      flex:1;
+      margin-bottom:22px;
+    }
+    .portal-card .feature-chips {
+      display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px;
+    }
+    .chip {
+      background:var(--bg);
+      border:1px solid var(--border);
+      color:var(--text-light);
+      font-size:0.7rem;
+      font-weight:600;
+      padding:3px 10px;
+      border-radius:var(--r-full);
+    }
+
+    .index-footer {
+      text-align:center;
+      padding:18px;
+      font-size:0.76rem;
+      color:var(--text-muted);
+      border-top:1px solid var(--border-light);
+      margin-top:auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="index-hero">
+    <div class="hero-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle;margin-right:5px;"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          AI-Powered Civic Platform
+        </div>
+    <h1>Smart <span>Public Service</span> CRM</h1>
+    <p>Transparent, accountable, and citizen-first governance — submit complaints, track services, and hold officials accountable.</p>
+    <div class="trust-row">
+      <span class="trust-item">No middlemen</span>
+      <span class="trust-item">Real-time tracking</span>
+      <span class="trust-item">Anonymous reporting</span>
+      <span class="trust-item">AI-priority routing</span>
+    </div>
+  </div>
+
+  <div class="portal-grid">
+    <div class="portal-card citizen">
+      <div class="portal-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <h2>Citizen Portal</h2>
+      <p>Access government services, file complaints, and track every request in real time — no office visit needed.</p>
+      <div class="feature-chips">
+        <span class="chip">Apply Services</span>
+        <span class="chip">Track Complaints</span>
+        <span class="chip">Report Issues</span>
+        <span class="chip">Chat with Officer</span>
+      </div>
+      <a href="login-citizen.html" class="btn-primary full-width">Enter Citizen Portal</a>
+    </div>
+
+    <div class="portal-card employee">
+      <div class="portal-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+      </div>
+      <h2>Employee Portal</h2>
+      <p>Manage assigned tasks, update statuses, accept new assignments, and communicate with citizens directly.</p>
+      <div class="feature-chips">
+        <span class="chip">Task Management</span>
+        <span class="chip">SLA Alerts</span>
+        <span class="chip">Document View</span>
+        <span class="chip">Live Chat</span>
+      </div>
+      <a href="login-employee.html" class="btn-primary full-width" style="background:var(--green);box-shadow:0 3px 12px rgba(21,128,61,.3);">Enter Employee Portal</a>
+    </div>
+
+    <div class="portal-card admin">
+      <div class="portal-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      </div>
+      <h2>Admin Dashboard</h2>
+      <p>Full oversight of complaints, officer performance, SLA tracking, corruption reports, and platform analytics.</p>
+      <div class="feature-chips">
+        <span class="chip">Full Oversight</span>
+        <span class="chip">Performance KPIs</span>
+        <span class="chip">Corruption Review</span>
+        <span class="chip">Reports</span>
+      </div>
+      <a href="login-admin.html" class="btn-primary full-width" style="background:#4C1D95;box-shadow:0 3px 12px rgba(76,29,149,.3);">Enter Admin Panel</a>
+    </div>
+  </div>
+
+  <div class="index-footer">
+    Smart Public Service CRM &nbsp;·&nbsp; Built for transparent governance &nbsp;·&nbsp; Greater Noida Municipal Authority
+  </div>
+
+</body>
+</html>

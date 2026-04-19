@@ -1,0 +1,220 @@
+/* ============================================================
+   admin.css  —  Admin Dashboard
+   ============================================================ */
+
+body { overflow: hidden; }
+
+.admin-layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ── Sidebar ──────────────────────────────────────────── */
+.sidebar {
+  width: 220px;
+  background: var(--navy);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.sidebar-brand {
+  padding: 22px 18px 18px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  position: relative;
+}
+.sidebar-brand::after {
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--saffron),var(--saffron-dark));
+}
+.brand-label { font-size: 1rem; font-weight: 800; color: #fff; letter-spacing:-.2px; }
+.brand-sub   { font-size: 0.7rem; color: rgba(255,255,255,.45); font-weight: 500; margin-top: 2px; }
+
+.sidebar-nav { flex: 1; padding: 12px 10px; display: flex; flex-direction: column; gap: 3px; overflow-y: auto; }
+.sidebar-link {
+  display: block;
+  padding: 10px 12px;
+  border-radius: var(--r-sm);
+  text-decoration: none;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: rgba(255,255,255,.6);
+  transition: all .18s;
+}
+.sidebar-link:hover  { background: rgba(255,255,255,.06); color: rgba(255,255,255,.9); }
+.sidebar-link.active { background: rgba(249,115,22,.15); color: #FED7AA; border-left: 3px solid var(--saffron); padding-left: 9px; }
+
+.sidebar-footer {
+  padding: 14px 18px;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,.35);
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+
+/* ── Content ──────────────────────────────────────────── */
+.admin-content {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--bg);
+  padding: 24px;
+}
+
+.admin-section {}
+.section-heading {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 20px;
+  letter-spacing: -.2px;
+}
+
+/* ── Stats Grid ──────────────────────────────────────── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.stat-card {
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  padding: 20px 18px 16px;
+  box-shadow: var(--sh-sm);
+  border: 1px solid var(--border-light);
+  position: relative;
+  overflow: hidden;
+}
+.stat-card::before {
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:3px;
+}
+.stat-card:nth-child(1)::before { background: var(--blue); }
+.stat-card:nth-child(2)::before { background: var(--green); }
+.stat-card:nth-child(3)::before { background: var(--saffron); }
+.stat-card:nth-child(4)::before { background: var(--red); }
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-number.blue   { color: var(--blue); }
+.stat-number.green  { color: var(--green); }
+.stat-number.orange { color: var(--saffron); }
+.stat-number.red    { color: var(--red); }
+
+.stat-desc { font-size: 0.84rem; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+.stat-note { font-size: 0.72rem; color: var(--text-light); }
+
+/* ── Overview Row ────────────────────────────────────── */
+.overview-row {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 16px;
+}
+@media (max-width:900px) { .overview-row { grid-template-columns: 1fr; } }
+
+.overview-card {
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  padding: 18px;
+  box-shadow: var(--sh-sm);
+  border: 1px solid var(--border-light);
+}
+.card-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 14px;
+}
+
+/* ── Category Bars ───────────────────────────────────── */
+.cat-bar-list { display: flex; flex-direction: column; gap: 12px; }
+.cat-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.82rem;
+  color: var(--text-mid);
+}
+.cat-row > span:first-child { width: 90px; font-weight: 600; flex-shrink: 0; }
+.cat-row > span:last-child  { width: 28px; text-align: right; font-weight: 700; color: var(--navy); flex-shrink: 0; }
+.bar-wrap { flex: 1; height: 8px; background: var(--border-light); border-radius: var(--r-full); overflow: hidden; }
+.bar { height: 100%; border-radius: var(--r-full); transition: width .6s ease; }
+
+/* ── Filter Row ──────────────────────────────────────── */
+.filter-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.filter-row .search-bar { flex: 1; min-width: 200px; }
+.filter-row select {
+  padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-full);
+  font-size: 0.86rem;
+  font-family: inherit;
+  color: var(--text-mid);
+  background: var(--surface);
+  outline: none;
+  cursor: pointer;
+}
+.filter-row select:focus { border-color: var(--saffron); }
+
+/* ── Employee Grid ───────────────────────────────────── */
+.emp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+}
+.emp-card {
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  padding: 18px;
+  box-shadow: var(--sh-sm);
+  border: 1px solid var(--border-light);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.emp-avatar {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--navy), var(--blue));
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.emp-name { font-size: 0.92rem; font-weight: 700; color: var(--navy); }
+.emp-dept { font-size: 0.76rem; color: var(--text-light); }
+.emp-stats {
+  display: flex;
+  gap: 14px;
+  padding: 10px 0 6px;
+  border-top: 1px solid var(--border-light);
+  font-size: 0.8rem;
+  text-align: center;
+}
+.emp-stats > div { flex: 1; }
+.emp-stats small { color: var(--text-muted); font-size: 0.68rem; display: block; margin-top: 2px; }
+.emp-stats .green  { color: var(--green);   font-weight: 800; font-size: .95rem; }
+.emp-stats .orange { color: var(--amber);   font-weight: 800; font-size: .95rem; }
+.emp-stats .blue   { color: var(--blue);    font-weight: 800; font-size: .95rem; }
+
+.perf-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--r-full);
+  width: fit-content;
+}
+.perf-badge.gold   { background: #FEF9C3; color: #92400E; border: 1px solid #FDE68A; }
+.perf-badge.silver { background: #F1F5F9; color: #475569; border: 1px solid var(--border); }
+.perf-badge.bronze { background: #FFF7ED; color: #92400E; border: 1px solid var(--saffron-muted); }

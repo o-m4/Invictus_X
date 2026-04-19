@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Profile - Smart CRM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .profile-main { padding: 20px 16px 100px; max-width: 540px; margin: 0 auto; }
+
+    .profile-hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #1E3A5F 100%);
+      border-radius: var(--r-xl);
+      padding: 28px 20px;
+      text-align: center;
+      margin-bottom: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .profile-hero::after {
+      content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+      background:linear-gradient(90deg,var(--saffron),var(--saffron-dark));
+    }
+    .profile-avatar {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--saffron), var(--saffron-dark));
+      color: #fff;
+      font-size: 1.8rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+      box-shadow: 0 4px 16px rgba(249,115,22,.4);
+    }
+    .profile-name { font-size: 1.1rem; font-weight: 800; color: #fff; margin-bottom: 3px; }
+    .profile-sub  { font-size: 0.78rem; color: rgba(255,255,255,.6); margin-bottom: 16px; }
+
+    .profile-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      background: rgba(255,255,255,.08);
+      border-radius: var(--r-md);
+      padding: 14px 10px;
+    }
+    .pstat { text-align: center; }
+    .pstat-num {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 3px;
+    }
+    .pstat-num.green  { color: #86EFAC; }
+    .pstat-num.orange { color: var(--saffron); }
+    .pstat-label { font-size: 0.68rem; color: rgba(255,255,255,.55); font-weight: 600; text-transform: uppercase; letter-spacing: .4px; }
+
+    .info-card {
+      background: var(--surface);
+      border-radius: var(--r-lg);
+      border: 1px solid var(--border-light);
+      box-shadow: var(--sh-sm);
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+    .info-card-title {
+      padding: 13px 16px 11px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      border-bottom: 1px solid var(--border-light);
+      background: var(--bg);
+    }
+    .info-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--border-light);
+      font-size: 0.88rem;
+    }
+    .info-row:last-child { border-bottom: none; }
+    .info-row-label { color: var(--text-light); font-weight: 500; }
+    .info-row-val   { color: var(--navy); font-weight: 600; }
+
+    /* Toggle */
+    .toggle { position: relative; width: 42px; height: 24px; display: inline-block; }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute; inset: 0;
+      background: var(--border);
+      border-radius: 999px;
+      transition: background .2s;
+      cursor: pointer;
+    }
+    .slider::before {
+      content: '';
+      position: absolute;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: #fff;
+      top: 3px; left: 3px;
+      transition: transform .2s;
+      box-shadow: 0 1px 4px rgba(0,0,0,.15);
+    }
+    .toggle input:checked + .slider { background: var(--saffron); }
+    .toggle input:checked + .slider::before { transform: translateX(18px); }
+
+    .logout-btn {
+      width: 100%;
+      padding: 13px;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-full);
+      color: var(--red);
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      margin-top: 6px;
+      transition: all .18s;
+    }
+    .logout-btn:hover { background: var(--red-soft); border-color: var(--red); }
+  </style>
+</head>
+<body>
+  <header class="page-header">
+    <h2>My Profile</h2>
+    <a href="citizen.html" style="color:rgba(255,255,255,.7);font-size:.8rem;text-decoration:none;display:flex;align-items:center;gap:4px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>Home</a>
+  </header>
+
+  <main class="profile-main">
+    <!-- Hero card -->
+    <div class="profile-hero">
+      <div class="profile-avatar">R</div>
+      <div class="profile-name">Rahul Sharma</div>
+      <div class="profile-sub">Citizen &nbsp;·&nbsp; Sector 12, Greater Noida</div>
+      <div class="profile-stats">
+        <div class="pstat"><div class="pstat-num">5</div><div class="pstat-label">Submitted</div></div>
+        <div class="pstat"><div class="pstat-num green">3</div><div class="pstat-label">Resolved</div></div>
+        <div class="pstat"><div class="pstat-num orange">2</div><div class="pstat-label">Open</div></div>
+      </div>
+    </div>
+
+    <!-- Contact info -->
+    <div class="info-card">
+      <div class="info-card-title">Account Details</div>
+      <div class="info-row"><span class="info-row-label">Mobile</span><span class="info-row-val">+91 98765 43210</span></div>
+      <div class="info-row"><span class="info-row-label">Email</span><span class="info-row-val"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0b796a637e674b6e736a667b676e25686466">[email&#160;protected]</a></span></div>
+      <div class="info-row"><span class="info-row-label">Area</span><span class="info-row-val">Sector 12, Greater Noida</span></div>
+      <div class="info-row"><span class="info-row-label">City</span><span class="info-row-val">Greater Noida, UP</span></div>
+      <div class="info-row"><span class="info-row-label">Account Status</span><span class="badge badge-available">Active</span></div>
+    </div>
+
+    <!-- Notifications -->
+    <div class="info-card">
+      <div class="info-card-title">Notification Settings</div>
+      <div class="info-row">
+        <span class="info-row-label">SMS Notifications</span>
+        <label class="toggle"><input type="checkbox" checked/><span class="slider"></span></label>
+      </div>
+      <div class="info-row">
+        <span class="info-row-label">Email Notifications</span>
+        <label class="toggle"><input type="checkbox"/><span class="slider"></span></label>
+      </div>
+      <div class="info-row">
+        <span class="info-row-label">Status Update Alerts</span>
+        <label class="toggle"><input type="checkbox" checked/><span class="slider"></span></label>
+      </div>
+    </div>
+
+    <button class="logout-btn" onclick="sessionStorage.clear(); window.location.href='index.html'">Log Out</button>
+  </main>
+
+  <nav class="bottom-nav">
+    <a href="citizen.html" class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg><span>Home</span>
+    </a>
+    <a href="activity.html" class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg><span>Activity</span>
+    </a>
+    <a href="chat.html" class="nav-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Messages</span>
+    </a>
+    <a href="profile.html" class="nav-item active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0

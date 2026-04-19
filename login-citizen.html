@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Citizen Login - Smart CRM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+  <div class="login-wrapper">
+
+    <div class="login-left citizen-bg">
+      <div class="login-left-content">
+        <div class="portal-tag">Citizen Portal</div>
+        <h1>Access Government Services</h1>
+        <p>Submit complaints, track service requests, and report corruption — all in one place.</p>
+        <ul class="feature-list">
+          <li>Submit complaints instantly</li>
+          <li>Real-time status tracking</li>
+          <li>Anonymous corruption reporting</li>
+          <li>Official service pricing</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="login-right">
+      <div class="login-box">
+        <a href="index.html" class="back-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:middle;"><polyline points="15,18 9,12 15,6"/></svg> Back to Home</a>
+
+        <div class="login-logo citizen">C</div>
+        <h2 class="login-title">Citizen Login</h2>
+        <p class="login-sub">Enter your registered mobile number to continue</p>
+
+        <div id="loginForm">
+          <div class="form-group">
+            <label>Mobile Number</label>
+            <input type="tel" id="phoneInput" placeholder="10-digit mobile number" maxlength="10" />
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <div class="password-wrap">
+              <input type="password" id="passwordInput" placeholder="Enter your password" />
+              <button class="toggle-pw" onclick="togglePassword('passwordInput', this)">Show</button>
+            </div>
+          </div>
+          <div class="form-row">
+            <label class="checkbox-label">
+              <input type="checkbox" id="rememberMe" /> Remember me
+            </label>
+            <a href="#" class="forgot-link">Forgot password?</a>
+          </div>
+          <button class="btn-login citizen-btn" onclick="loginCitizen()">Login</button>
+          <div class="divider"><span>or</span></div>
+          <button class="btn-otp" onclick="sendOTP()">Login with OTP</button>
+          <p class="register-link">New user? <a href="register.html">Register here</a></p>
+        </div>
+
+        <div id="otpForm" style="display:none;">
+          <p class="otp-info">OTP sent to <strong id="otpPhone"></strong></p>
+          <div class="otp-inputs">
+            <input type="text" class="otp-box" maxlength="1" oninput="otpNext(this, 0)" />
+            <input type="text" class="otp-box" maxlength="1" oninput="otpNext(this, 1)" />
+            <input type="text" class="otp-box" maxlength="1" oninput="otpNext(this, 2)" />
+            <input type="text" class="otp-box" maxlength="1" oninput="otpNext(this, 3)" />
+            <input type="text" class="otp-box" maxlength="1" oninput="otpNext(this, 4)" />
+            <input type="text" class="otp-box" maxlength="1" oninput="otpNext(this, 5)" />
+          </div>
+          <button class="btn-login citizen-btn" onclick="verifyOTP()">Verify OTP</button>
+          <button class="btn-back" onclick="backToLogin()">Back</button>
+        </div>
+
+        <div id="errorMsg" class="error-msg" style="display:none;"></div>
+      </div>
+
+      <!-- Demo credentials hint -->
+      <div class="demo-hint">
+        <strong>Demo:</strong> Phone: 9800000001 &nbsp;|&nbsp; Password: citizen123
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/login.js"></script>
+  <script>
+    function loginCitizen() {
+      const phone    = document.getElementById("phoneInput").value.trim();
+      const password = document.getElementById("passwordInput").value.trim();
+
+      if (!phone || phone.length !== 10) {
+        showError("Please enter a valid 10-digit mobile number.");
+        return;
+      }
+      if (!password) {
+        showError("Please enter your password.");
+        return;
+      }
+
+      // Demo validation
+      if (phone === "9800000001" && password === "citizen123") {
+        // FIX: Store complete user object including phone for activity page
+        sessionStorage.setItem("crm_user", JSON.stringify({ role: "citizen", name: "Rahul Sharma", phone }));
+        sessionStorage.setItem("citizen_phone", phone);
+        window.location.href = "citizen.html";
+      } else {
+        showError("Invalid credentials. Use demo: 9800000001 / citizen123");
+      }
+    }
+
+    function sendOTP() {
+      const phone = document.getElementById("phoneInput").value.trim();
+      if (!phone || phone.length !== 10) {
+        showError("Enter a valid 10-digit number to receive OTP.");
+        return;
+      }
+      document.getElementById("loginForm").style.display = "none";
+      document.getElementById("otpForm").style.display   = "block";
+      document.getElementById("otpPhone").textContent    = "+91 " + phone;
+      clearError();
+    }
+
+    function verifyOTP() {
+      const boxes = document.querySelectorAll(".otp-box");
+      const otp   = Array.from(boxes).map(b => b.value).join("");
+      if (otp === "123456") {
+        const phone = document.getElementById("phoneInput").value.trim();
+        sessionStorage.setItem("crm_user", JSON.stringify({ role: "citizen", name: "Citizen User", phone }));
+        sessionStorage.setItem("citizen_phone", phone);
+        window.location.href = "citizen.html";
+      } else {
+        showError("Invalid OTP. Demo OTP is 123456.");
+      }
+    }
+
+    function backToLogin() {
+      document.getElementById("loginForm").style.display = "block";
+      document.getElementById("otpForm").style.display   = "none";
+    }
+  </script>
+</body>
+</html>
